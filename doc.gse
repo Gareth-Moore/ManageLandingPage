@@ -1,0 +1,20 @@
+total workable days:
+=(DAY(EOMONTH(A2,0))-COUNTIF(E2:E32, FALSE))
+
+average days complete
+=IFERROR(AVERAGEIFS(C2:C32, A2:A32, "<="&TODAY()-1, E2:E32, TRUE) * 24, 0)
+
+number of hours for the month requried (G4)
+=COUNTIF(E2:E32, TRUE) * (40 / 7)
+
+hours remaining (G5)
+=G4-SUMIFS(D2:D32, E2:E32, TRUE)
+
+hours completed
+=SUMIFS(D2:D32, E2:E32, TRUE)
+
+hour rate requried
+=IF(G5<=0, "COMPLETED", G5/COUNTIFS(A2:A32, ">="&TODAY(), E2:E32, TRUE))
+
+hours rate complete
+=J6/COUNTIFS(A2:A32, "<"&TODAY(), E2:E32, TRUE)
