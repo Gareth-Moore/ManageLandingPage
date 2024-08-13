@@ -16,17 +16,6 @@ body {
   }
 }
 
-/* error message */
-
-.error-message {
-  position: absolute;
-  display: block;
-  color: var(--clr-error);
-  top: var(--size-700);
-  left: 0;
-  opacity: 1 !important;
-}
-
 /* logo svg */
 
 .logo-light,
@@ -480,10 +469,39 @@ input:is([type="text"], [type="email"]):focus {
   justify-content: center;
 }
 
+@media (max-width: 50em) {
+  .footer-content--form form {
+    display: grid;
+    gap: 1px var(--size-400);
+    grid-template-columns: 1fr 66px;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin-inline: auto;
+  }
+}
+
 .footer-content--form input {
   font-size: var(--fs-300);
   width: 100%;
   max-width: 23rem;
+}
+
+.error-message {
+  position: absolute;
+  display: block;
+  color: var(--clr-error);
+  top: var(--size-700);
+  left: 0;
+  opacity: 1 !important;
+}
+
+@media (max-width: 50em) {
+  .error-message {
+    position: unset;
+    top: unset;
+    grid-column: 1 / -1;
+  }
 }
 
 .footer-content--logo-social {

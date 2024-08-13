@@ -9,6 +9,8 @@ const Newsletter_Footer = () => {
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
+    if (email === "") return;
+
     if (validateEmail(email)) {
       setFormInvalid(true);
     } else {
@@ -29,7 +31,10 @@ const Newsletter_Footer = () => {
               setEmail(e.target.value);
             }}
             value={email}
-            style={{ color: formInvalid ? "var(--clr-error)" : "var(--clr-neutral-900)" }}
+            style={{
+              color: formInvalid ? "var(--clr-error)" : "var(--clr-neutral-900)",
+              outline: formInvalid ? "3px solid var(--clr-error)" : "none",
+            }}
           />
           <button className="button no-glow reduced-padding">Go</button>
           {formInvalid && <p className="error-message">Please enter a valid email address.</p>}
